@@ -34,6 +34,7 @@ const port = process.env.PORT || 5000
 // requests into a JavaScript object before it reaches
 // the route files.
 //
+// The method `.use` sets up middleware for Express apps. 
 app.use(express.json())
 
 

@@ -31,6 +31,7 @@ router.get("/api/articles", (req, res) => {
 }) // this should now return an empty array (with key articles)
     // because we haven't created any objects yet
 
+
 /**
  * Action:          SHOW
  * Method:          GET
@@ -52,13 +53,28 @@ router.get("/api/articles", (req, res) => {
  * Description:     Update an Article by Article ID
  */
 
+
 /**
  * Action:          CREATE
  * Method:          POST
  * URI:             /api/articles/
  * Description:     Create a new Article
  */
-
+router.post("/api/articles", (req, res) => { // the api part of this isn't necesary but 
+            // helpful to whoever looks at your code
+            // so they know what to expect back (json etc)
+    Article.create(req.body.article) // the .article is where the data is coming from in Insomnia
+            // On a successful `create` action, respond with the 201
+            // HTTP status and the content of the new Article
+    .then((newArticle) => {
+        res.status(201).json({ article: newArticle })
+    })        
+            // Catch any errors that might occur
+    .catch((error) => {
+        res.status(500).json({ error: error })
+    })
+    
+})
 
 
 // Export the Router so we can use it in the server.js file
