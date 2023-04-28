@@ -29,6 +29,14 @@ const port = process.env.PORT || 5000
         // if the port can't be found in the environment, 
         // 5000 is the fall back port
 
+/** Middleware */ 
+// Add `bodyParser` middleware which will parse JSON
+// requests into a JavaScript object before it reaches
+// the route files.
+//
+app.use(express.json())
+
+
 /**
  * Routes
  * Mount the imported Routers
