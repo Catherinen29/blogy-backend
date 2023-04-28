@@ -1,7 +1,19 @@
-// Set up your dependencies!
+// Set up your dependencies! 
 // Require necessary NPM packages
 const express = require("express")
 const mongoose = require("mongoose")
+const db = mongoose.connection
+
+// Require DB configuration file (import other files)
+const dbConfig = require("./config/db")
+
+
+// Establish database connection (mongodb!)
+mongoose.connect(dbConfig)
+
+db.on("error", (error) => console.log(`ERROR: ${error.message}`))
+db.on("connected", () => console.log(`MongoDB Connected: ${dbConfig}`))
+db.on("disconnected", () => console.log(`MongoDB disconnected`))
 
 // Require Route files
 const indexRouter = require("./routes/index")
