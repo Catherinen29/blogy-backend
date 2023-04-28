@@ -33,7 +33,6 @@ const port = process.env.PORT || 5000
  */
 app.use(indexRouter)
 
-
 // Start the server and listen for requests on the given port
 app.listen(port, () => console.log(`blogy is listening on port ${port}`))
     // logging is imporant when you are deploying to a server 
